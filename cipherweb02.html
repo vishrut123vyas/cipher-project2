@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Examination System</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    input[type="text"],
+    input[type="password"],
+    select {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        box-sizing: border-box;
+    }
+    input[type="submit"],
+    input[type="button"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover,
+    input[type="button"]:hover {
+        background-color: #0056b3;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h2>Welcome to Online Examination System!</h2>
+    <form id="loginForm" style="display:block;">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+        <input type="submit" value="Login">
+    </form>
+
+    <form id="menuForm" style="display:none;">
+        <h3>Menu:</h3>
+        <button onclick="updateProfile()">Update Profile</button>
+        <button onclick="updatePassword()">Update Password</button>
+        <button onclick="selectAnswers()">Select Answers for MCQs</button>
+        <button onclick="timerAndAutoSubmit()">Timer and Auto-Submit</button>
+        <button onclick="logout()">Logout</button>
+    </form>
+
+    <div id="profileForm" style="display:none;">
+        <h3>Update Profile</h3>
+        <label for="newProfileInfo">New Profile Information:</label>
+        <input type="text" id="newProfileInfo" name="newProfileInfo">
+        <input type="button" value="Update" onclick="submitProfile()">
+    </div>
+
+    <div id="passwordForm" style="display:none;">
+        <h3>Update Password</h3>
+        <label for="newPassword">New Password:</label>
+        <input type="password" id="newPassword" name="newPassword">
+        <input type="button" value="Update" onclick="submitPassword()">
+    </div>
+</div>
+
+<script>
+    function updateProfile() {
+        document.getElementById('menuForm').style.display = 'none';
+        document.getElementById('profileForm').style.display = 'block';
+    }
+
+    function updatePassword() {
+        document.getElementById('menuForm').style.display = 'none';
+        document.getElementById('passwordForm').style.display = 'block';
+    }
+
+    function selectAnswers() {
+        alert('Selecting answers for MCQs...');
+    }
+
+    function timerAndAutoSubmit() {
+        alert('Timer started. Auto-submitting...');
+    }
+
+    function submitProfile() {
+        var newProfileInfo = document.getElementById('newProfileInfo').value;
+        alert('Profile updated successfully!');
+        // Perform AJAX request to update profile in database
+        // After successful update, display menu again
+        document.getElementById('menuForm').style.display = 'block';
+        document.getElementById('profileForm').style.display = 'none';
+    }
+
+    function submitPassword() {
+        var newPassword = document.getElementById('newPassword').value;
+        alert('Password updated successfully!');
+        // Perform AJAX request to update password in database
+        // After successful update, display menu again
+        document.getElementById('menuForm').style.display = 'block';
+        document.getElementById('passwordForm').style.display = 'none';
+    }
+
+    function logout() {
+        // Redirect to logout page or clear session/local storage
+        alert('Logged out successfully!');
+        document.getElementById('loginForm').style.display = 'block';
+        document.getElementById('menuForm').style.display = 'none';
+    }
+</script>
+</body>
+</html>
